@@ -1,0 +1,15 @@
+<h1>Book List</h1>
+<%= link_to "New Book", new_book_path %>
+<br>
+<br>
+
+<% @books.each do |book|%>
+  <%= book.title %>
+  <%= book.author %>
+  <%= link_to "Show", book %>
+  <% if current_user&.id == book.user_id %>
+    <%= link_to "Edit", edit_book_path(book) %>
+    <%= link_to "Destroy", book, method: :delete %>
+  <% end %>
+  <br>
+<% end %>
